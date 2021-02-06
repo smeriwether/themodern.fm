@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title><%= @title %></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta content="<%= @meta_description %>" name="description" />
+    <meta content="<%= @title %>" property="og:title" />
+    <meta content="<%= @meta_description %>" property="og:description" />
+    <meta content="https://themodern.fm/public/card.jpg" property="og:image" />
+    <meta content="website" property="og:type" />
+    <meta content="<%= @title %>" property="twitter:title" />
+    <meta content="<%= @meta_description %>" property="twitter:description" />
+    <meta content="https://themodern.fm/public/card.jpg" property="twitter:image" />
+    <meta content="summary_large_image" name="twitter:card" />
+    <link href="public/apple-touch-icon.jpg" sizes="180x180" rel="apple-touch-icon">
+    <link href="public/logo.ico" rel="icon" type="image/x-icon">
+    <link href="public/logo.ico" rel="shortcut icon" type="image/x-icon">
+    <link href="styles.css" rel="stylesheet">
+    <link rel="preload" href="public/fonts/Rubik/Rubik-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="public/fonts/Rubik/Rubik-Italic.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="public/fonts/Rubik/Rubik-Bold.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="public/fonts/Rubik/Rubik-BoldItalic.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="public/fonts/Merriweather/Merriweather-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="public/fonts/Merriweather/Merriweather-Italic.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="public/fonts/Merriweather/Merriweather-Bold.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="public/fonts/Merriweather/Merriweather-BoldItalic.woff2" as="font" type="font/woff2" crossorigin>
+    <!-- Fathom - beautiful, simple website analytics -->
+    <script src="https://newt.themodern.fm/script.js" data-site="ALTLNZZS" defer></script>
+    <!-- / Fathom -->
+    <link rel="preconnect" href="https://artwork.captivate.fm">
+    <% if @preconnect_to_host_player %>
+      <link rel="preconnect" href="https://player.captivate.fm">
+      <link rel="preconnect" href="https://use.typekit.net">
+    <% end %>
+    <style type="text/css">
+      @font-face {
+        font-family: 'Rubik';
+        font-style: normal;
+        font-weight: normal;
+        font-display: swap;
+        src: url("public/fonts/Rubik/Rubik-Regular.woff2") format("woff2"),
+             url("public/fonts/Rubik/Rubik-Regular.woff") format("woff"),
+             url("public/fonts/Rubik/Rubik-Regular.ttf") format("truetype");
+      }
+
+      @font-face {
+        font-family: 'Rubik';
+        font-style: italic;
+        font-weight: normal;
+        font-display: swap;
+        src: url("public/fonts/Rubik/Rubik-Italic.woff2") format("woff2"),
+             url("public/fonts/Rubik/Rubik-Italic.woff") format("woff"),
+             url("public/fonts/Rubik/Rubik-Italic.ttf") format("truetype");
+      }
+
+      @font-face {
+        font-family: 'Rubik';
+        font-style: normal;
+        font-weight: bold;
+        font-display: swap;
+        src: url("public/fonts/Rubik/Rubik-Bold.woff2") format("woff2"),
+             url("public/fonts/Rubik/Rubik-Bold.woff") format("woff"),
+             url("public/fonts/Rubik/Rubik-Bold.ttf") format("truetype");
+      }
+
+      @font-face {
+        font-family: 'Rubik';
+        font-style: italic;
+        font-weight: bold;
+        font-display: swap;
+        src: url("public/fonts/Rubik/Rubik-BoldItalic.woff2") format("woff2"),
+             url("public/fonts/Rubik/Rubik-BoldItalic.woff") format("woff"),
+             url("public/fonts/Rubik/Rubik-BoldItalic.ttf") format("truetype");
+      }
+
+      @font-face {
+        font-family: 'Merriweather';
+        font-style: normal;
+        font-weight: normal;
+        font-display: swap;
+        src: url("public/fonts/Merriweather/Merriweather-Regular.woff2") format("woff2"),
+             url("public/fonts/Merriweather/Merriweather-Regular.woff") format("woff");
+      }
+
+      @font-face {
+        font-family: 'Merriweather';
+        font-style: italic;
+        font-weight: normal;
+        font-display: swap;
+        src: url("public/fonts/Merriweather/Merriweather-Italic.woff2") format("woff2"),
+             url("public/fonts/Merriweather/Merriweather-Italic.woff") format("woff");
+      }
+
+      @font-face {
+        font-family: 'Merriweather';
+        font-style: normal;
+        font-weight: bold;
+        font-display: swap;
+        src: url("public/fonts/Merriweather/Merriweather-Bold.woff2") format("woff2"),
+             url("public/fonts/Merriweather/Merriweather-Bold.woff") format("woff");
+      }
+
+      @font-face {
+        font-family: 'Merriweather';
+        font-style: italic;
+        font-weight: bold;
+        font-display: swap;
+        src: url("publipublic/fonts/Merriweather/Merriweather-BoldItalic.woff2") format("woff2"),
+             url("public/fonts/Merriweather/Merriweather-BoldItalic.woff") format("woff");
+      }
+    </style>
+  </head>
+  <body class="bg-primary text-gray-800 font-rubik">
+    <% unless @hide_top_navigation %>
+      <nav class="mb-10 w-full bg-gray-800 text-white py-2 flex justify-center lg:mb-20">
+        <a href="index.html" class="flex flex-row font-normal items-center group lg:container lg:max-w-screen-md">
+          <svg class="w-8 pr-2" viewBox="0 0 200 201" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+            <path d="M194.655 100.612 C194.655 48.249 152.276 5.8 100 5.8 47.724 5.8 5.345 48.249 5.345 100.612 5.345 152.974 47.724 195.423 100 195.423 152.276 195.423 194.655 152.974 194.655 100.612 Z" fill="currentColor" fill-opacity="0" stroke="currentColor" stroke-width="10.031" stroke-opacity="1" stroke-linejoin="round" stroke-linecap="round"/>
+            <text class="font-merriweather" transform="matrix(0.9999991764525077 0.0012833917197557373 -0.0012833917197557373 0.9999991764525077 43.8225318311886 30.039949061851768)" y="110.0" font-size="111.451" x="1.0" fill="currentColor">M</text>
+          </svg>
+          <span class="font-merriweather">The Modern</span>
+        </a>
+      </nav>
+    <% end %>
+
+    <main class="container max-w-screen-md mx-auto my-12 px-8 lg:px-5">
+      <%= @template %>
+    </main>
+
+    <footer class="bg-gray-800 text-white w-full mt-16 text-center py-2 text-sm flex justify-center lg:mt-36">
+      <div class="w-full flex flex-row justify-around lg:justify-between lg:container lg:max-w-screen-md">
+        <span class="block">This website is <a href="https://www.copyright.gov/help/faq/faq-general.html#mywork" target="_blank" rel="noopener" class="font-normal">copyrighted</a></span>
+        <a href="privacy.html" class="block font-normal">Privacy Policy</a>
+      </div>
+    </footer>
+
+    <script>
+      var today = new Date();
+      var weekdays = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ];
+
+      console.log(`
+      Hi 👋. If you're curious how we built this site, we have good news! It's open source! Take a look at
+      the site on Github here: https://github.com/smeriwether/themodern.fm.
+
+      At a high level, it's a static site, with TailwindCSS, served via Nginx on a DigitalOcean droplet.
+
+      Enjoy the rest of your ${weekdays[today.getDay()]}.
+      `);
+    </script>
+  </body>
+</html>
