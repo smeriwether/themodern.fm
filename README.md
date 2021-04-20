@@ -5,6 +5,13 @@
 The Modern is a podcasting network that I'm apart of with a friend. This repo stores the tools that I built to create 
 the website for the network. Building the website creates a static site that's served via nginx on a DigitalOcean droplet.
 
+## Add a new podcast
+
+Adding a new podcast is easy,simply add the podcast's rss feed to the [FEED_URLS](https://github.com/smeriwether/themodern.fm/blob/main/build/main.rb#L13)
+array in `main.rb`.
+
+*We currently only support podcasts from [Capitvate.fm](https://captivate.fm)*
+
 ## Directory
 
 * `/template` stores the Ruby HTML templates used to create the site's content
