@@ -13,6 +13,7 @@ puts "Starting website build!"
 FEED_URLS = [
   "https://feeds.captivate.fm/a-modern-man/",
   "https://feeds.captivate.fm/fargo-watch-party/",
+  "https://feeds.captivate.fm/a-modern-woman/",
 ]
 
 podcasts = FEED_URLS.map do |feed_url|
