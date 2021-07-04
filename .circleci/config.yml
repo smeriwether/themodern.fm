@@ -1,12 +1,11 @@
 version: 2.1
 orbs:
   ruby: circleci/ruby@1.1.2
-  node: circleci/node@4.1.0
 
 jobs:
   build:
     docker:
-      - image: cimg/ruby:2.7.1-node
+      - image: cimg/ruby:3.0.1-node
     executor: ruby/default
     steps:
       - checkout
@@ -15,13 +14,11 @@ jobs:
           command: |
             gem install bundler -v 2.1.4
             bundle install
-            npm install
-      - add_ssh_keys:
-          fingerprints:
-            - "91:3f:bc:c7:42:7f:55:72:75:c4:9a:82:9f:ab:26:e9"
-      - run:
-          name: "Build & Deploy"
-          command: /bin/bash ./deploy/deploy.sh
+            git checkout production
+            bundle exec ruby build/build.rb
+            echo $(date) > build_timestamp
+            git commit -m "Build $(date)"
+            git push origin production
 
 workflows:
   version: 2

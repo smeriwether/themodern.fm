@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include head.html %}
+  </head>
+
+  <body class="bg-primary text-gray-800 font-rubik">
+    {% if page.show_secondary_navigation %}
+      {% include secondary_navigation.html %}
+    {% endif %}
+
+    <main class="container max-w-screen-md mx-auto my-12 px-8 lg:px-5">
+      {{ content }}
+    </main>
+
+    {% include footer.html %}
+  </body>
+
+  <script>
+    var today = new Date();
+    var weekdays = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ];
+
+    console.log(`
+      Hi 👋. Welcome to The Modern's homepage. We're a couple of friends talking into microphones. We've recapped
+      our favorite TV shows, interviewed interesting people, and shared our thoughts about world events. I hope
+      you find something for you.
+
+      If you're curious how we built this site, we have good news! It's open source! Take a look at
+      the site on Github here: https://github.com/smeriwether/themodern.fm.
+
+      Enjoy the rest of your ${weekdays[today.getDay()]}.
+   `);
+  </script>
+</html>
+

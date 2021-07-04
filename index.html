@@ -1,6 +1,10 @@
+---
+layout: default
+---
+
 <header class="mb-12 text-center">
   <h1 class="text-6xl font-bold pb-2 leading-tight font-merriweather font-black lg:text-8xl">
-    <a href="index.html">The Modern</a>
+    <a href="/">The Modern</a>
   </h1>
   <p class="lg:text-xl">A podcast network by <a href="https://twitter.com/J_DFerrell" rel="noopener">JD Ferrell</a> and <a href="https://stephen.fyi" rel="noopener">Stephen Meriwether</a></p>
 </header>
@@ -11,18 +15,19 @@
   </header>
 
   <div class="flex flex-col lg:flex-row">
-    <img src="<%= @latest_episode.artwork_url %>" alt="" class="max-w-xxs max-h-60 m-6 shadow-xl rounded transform -rotate-2" />
+    {% assign latest_episode_hash = site.data.latest_episode %}
+    {% assign latest_episode = site.data.episodes[latest_episode_hash.podcast].episodes[0] %}
+    {% assign latest_podcast = site.data.podcasts | find:"slug",latest_episode_hash.podcast %}
+
+    <img src="{{ latest_podcast.artwork_url }}" alt="" class="max-w-xxs max-h-60 m-6 shadow-xl rounded transform -rotate-2" />
 
     <div class="p-6 flex flex-col justify-center">
-      <h3 class="mb-2 text-lg font-bold"><%= @latest_episode.podcast_title %></h3>
-      <h4 class="mb-4"><%= @latest_episode.title %></h4>
+      <h3 class="mb-2 text-lg font-bold">{{ latest_podcast.name }}</h3>
+      <h4 class="mb-4">{{ latest_episode.name }}</h4>
       <p class="mb-4 text-sm leading-relaxed">
-        <%= @latest_episode.description[0..208] %>
-        <% if @latest_episode.description.length > 208 %>
-          ...
-        <% end %>
+        {{ latest_episode.description | slice: 0, 209 }}...
       </p>
-      <a href="<%= @latest_episode.url %>" class="text-sm">
+      <a href="/{{ latest_episode.slug }}" class="text-sm">
         <span class="mr-1">Listen Online</span>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 inline">
           <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -32,24 +37,26 @@
   </div>
 </section>
 
-<% @podcasts.each do |podcast| %>
+{% for podcast in site.data.podcasts %}
   <section class="mb-12 lg:pl-12">
     <header class="flex items-center mb-8">
-      <img src="<%= podcast.artwork_url %>" alt="" class="w-20 h-20 shadow rounded mr-4" />
-      <h2 class="font-bold text-2xl"><a href="<%= podcast.url %>"><%= podcast.title %></a></h2>
+      <img src="{{ podcast.artwork_url }}" alt="" class="w-20 h-20 shadow rounded mr-4" />
+      <h2 class="font-bold text-2xl">
+        <a href="/{{ podcast.slug }}">{{ podcast.name }}</a>
+      </h2>
     </header>
 
     <ol class="ml-4 lg:ml-8">
-      <% podcast.episodes.first(5).each do |episode| %>
+      {% for episode in site.data.episodes[podcast.slug].episodes limit:5 %}
         <li class="pb-4">
-          <a href="<%= episode.url %>" class="font-normal">
-            <span class="font-bold mr-3"><%= episode.number %></span><%= episode.title %>
+          <a href="/{{ episode.slug }}" class="font-normal">
+            <span class="font-bold mr-3">{{ episode.number }}</span>{{ episode.name }}
           </a>
         </li>
-      <% end %>
+      {% endfor %}
 
       <li class="pt-2">
-        <a href="<%= podcast.url %>" class="text-sm">
+        <a href="/{{ podcast.slug }}" class="text-sm">
           <span class="mr-1">View All</span>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 inline">
             <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -58,4 +65,4 @@
       </li>
     </ol>
   </section>
-<% end %>
+{% endfor %}
