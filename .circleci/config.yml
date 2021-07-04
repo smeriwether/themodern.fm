@@ -4,19 +4,27 @@ orbs:
 
 jobs:
   build:
+    branches:
+      only:
+        - main
     docker:
       - image: cimg/ruby:3.0.1-node
     executor: ruby/default
     steps:
       - checkout
       - run:
-          name: "Install"
+          name: "Build"
           command: |
+            git config user.email "smeriwether@hey.com"
+            git config user.name "Stephen Meriwether"
             gem install bundler -v 2.1.4
             bundle install
             git checkout production
+            git merge main --no-ff
+            git checkout -- .gitignore
             bundle exec ruby build/build.rb
             echo $(date) > build_timestamp
+            git add --all
             git commit -m "Build $(date)"
             git push origin production
 
