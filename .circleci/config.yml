@@ -16,6 +16,7 @@ jobs:
             git config user.name "Stephen Meriwether"
             gem install bundler -v 2.1.4
             bundle install
+            git checkout -- Gemfile.lock
             git checkout production
             git merge main --no-commit --no-ff
             git checkout -- .gitignore
