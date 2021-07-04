@@ -1,20 +1,27 @@
+---
+layout: default
+---
+
+{% assign podcast = page.podcast %}
+{% assign episodes = page.episodes %}
+
 <header class="mb-6 text-center lg:px-8">
   <h1 class="text-5xl font-bold pb-2 font-black leading-tight lg:text-6xl">
-    <%= @podcast.title %>
+    {{ podcast.name }}
   </h1>
 </header>
 
 <section class="mb-4 lg:px-8">
   <div class="flex flex-col lg:flex-row">
-    <img src="<%= @podcast.artwork_url %>" alt="" class="max-w-xs m-6 shadow-xl rounded transform -rotate-2 lg:max-w-xxs lg:max-h-60" />
+    <img src="{{ podcast.artwork_url }}" alt="" class="max-w-xs m-6 shadow-xl rounded transform -rotate-2 lg:max-w-xxs lg:max-h-60" />
 
     <div class="pt-6 flex flex-col justify-center lg:p-6">
       <p class="mb-4 leading-loose">
-        <%= @podcast.subtitle %>
+        {{ podcast.subtitle }}
       </p>
 
       <p class="mb-4 leading-loose">
-        By <strong><%= @podcast.author %></strong>
+        By <strong>{{ podcast.author }}</strong>
       </p>
     </div>
   </div>
@@ -22,7 +29,7 @@
 
 <section class="mb-12 lg:px-8">
   <p class="mb-4 leading-loose">
-    <%= @podcast.description %>
+    {{ podcast.description }}
   </p>
 </section>
 
@@ -32,12 +39,12 @@
   </header>
 
   <ol class="ml-4 lg:ml-8">
-    <% @podcast.episodes.each do |episode| %>
+    {% for episode in episodes %}
       <li class="pb-4">
-        <a href="<%= episode.url %>" class="font-normal">
-          <span class="font-bold mr-3"><%= episode.number %></span><%= episode.title %>
+        <a href="/{{ episode.slug }}" class="font-normal">
+          <span class="font-bold mr-3">{{ episode.number }}</span>{{ episode.name }}
         </a>
       </li>
-    <% end %>
+    {% endfor %}
   </ol>
 </section>

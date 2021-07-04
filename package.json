@@ -1,18 +1,8 @@
 {
-  "name": "themodern",
-  "version": "0.0.0",
-  "description": "Website for themodern.fm",
-  "scripts": {
-    "build": "./build/build.sh",
-    "open": "open ./site/index.html",
-    "deploy": "./deploy/deploy.sh"
-  },
-  "author": "Stephen Meriwether",
-  "license": "no-license",
   "dependencies": {
-    "autoprefixer": "^10.2.0",
-    "postcss": "^8.2.2",
-    "postcss-cli": "^8.3.1",
-    "tailwindcss": "^2.0.2"
+    "autoprefixer": "^10.2.6",
+    "postcss": "^8.3.5",
+    "postcss-import": "^14.0.2",
+    "tailwindcss": "^2.2.4"
   }
 }

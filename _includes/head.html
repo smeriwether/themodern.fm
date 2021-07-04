@@ -1,0 +1,106 @@
+<title>{{ site.title }}</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta content="{{ site.description }}" name="description" />
+<meta content="{{ site.title }}" property="og:title" />
+<meta content="{{ site.description }}" property="og:description" />
+<meta content="https://themodern.fm/assets/card.jpg" property="og:image" />
+<meta content="website" property="og:type" />
+<meta content="{{ site.title }}" property="twitter:title" />
+<meta content="{{ site.description }}" property="twitter:description" />
+<meta content="https://themodern.fm/assets/card.jpg" property="twitter:image" />
+<meta content="summary_large_image" name="twitter:card" />
+<link href="/assets/apple-touch-icon.jpg" sizes="180x180" rel="apple-touch-icon">
+<link href="/assets/logo.ico" rel="icon" type="image/x-icon">
+<link href="/assets/logo.ico" rel="shortcut icon" type="image/x-icon">
+<link rel="preload" href="/assets/fonts/Rubik/Rubik-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/Rubik/Rubik-Italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/Rubik/Rubik-Bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/Rubik/Rubik-BoldItalic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/Merriweather/Merriweather-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/Merriweather/Merriweather-Italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/Merriweather/Merriweather-Bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/Merriweather/Merriweather-BoldItalic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preconnect" href="https://artwork.captivate.fm">
+{% if page.show_podcast_player %}
+  <link rel="preconnect" href="https://player.captivate.fm">
+  <link rel="preconnect" href="https://use.typekit.net">
+{% endif %}
+<link rel="stylesheet" href="/css/site.css">
+<style type="text/css">
+  @font-face {
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: normal;
+    font-display: swap;
+    src: url("/assets/fonts/Rubik/Rubik-Regular.woff2") format("woff2"),
+         url("/assets/fonts/Rubik/Rubik-Regular.woff") format("woff"),
+         url("/assets/fonts/Rubik/Rubik-Regular.ttf") format("truetype");
+  }
+
+  @font-face {
+    font-family: 'Rubik';
+    font-style: italic;
+    font-weight: normal;
+    font-display: swap;
+    src: url("/assets/fonts/Rubik/Rubik-Italic.woff2") format("woff2"),
+         url("/assets/fonts/Rubik/Rubik-Italic.woff") format("woff"),
+         url("/assets/fonts/Rubik/Rubik-Italic.ttf") format("truetype");
+  }
+
+  @font-face {
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: bold;
+    font-display: swap;
+    src: url("/assets/fonts/Rubik/Rubik-Bold.woff2") format("woff2"),
+         url("/assets/fonts/Rubik/Rubik-Bold.woff") format("woff"),
+         url("/assets/fonts/Rubik/Rubik-Bold.ttf") format("truetype");
+  }
+
+  @font-face {
+    font-family: 'Rubik';
+    font-style: italic;
+    font-weight: bold;
+    font-display: swap;
+    src: url("/assets/fonts/Rubik/Rubik-BoldItalic.woff2") format("woff2"),
+         url("/assets/fonts/Rubik/Rubik-BoldItalic.woff") format("woff"),
+         url("/assets/fonts/Rubik/Rubik-BoldItalic.ttf") format("truetype");
+  }
+
+  @font-face {
+    font-family: 'Merriweather';
+    font-style: normal;
+    font-weight: normal;
+    font-display: swap;
+    src: url("/assets/fonts/Merriweather/Merriweather-Regular.woff2") format("woff2"),
+         url("/assets/fonts/Merriweather/Merriweather-Regular.woff") format("woff");
+  }
+
+  @font-face {
+    font-family: 'Merriweather';
+    font-style: italic;
+    font-weight: normal;
+    font-display: swap;
+    src: url("/assets/fonts/Merriweather/Merriweather-Italic.woff2") format("woff2"),
+         url("/assets/fonts/Merriweather/Merriweather-Italic.woff") format("woff");
+  }
+
+  @font-face {
+    font-family: 'Merriweather';
+    font-style: normal;
+    font-weight: bold;
+    font-display: swap;
+    src: url("/assets/fonts/Merriweather/Merriweather-Bold.woff2") format("woff2"),
+         url("/assets/fonts/Merriweather/Merriweather-Bold.woff") format("woff");
+  }
+
+  @font-face {
+    font-family: 'Merriweather';
+    font-style: italic;
+    font-weight: bold;
+    font-display: swap;
+    src: url("/assets/fonts/Merriweather/Merriweather-BoldItalic.woff2") format("woff2"),
+         url("/assets/fonts/Merriweather/Merriweather-BoldItalic.woff") format("woff");
+  }
+</style>
