@@ -10,21 +10,30 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "Install"
+          name: "Build"
           command: |
+            git config user.email "smeriwether@hey.com"
+            git config user.name "Stephen Meriwether"
             gem install bundler -v 2.1.4
             bundle install
             git checkout production
+            git merge main --no-commit --no-ff
+            git checkout -- .gitignore
             bundle exec ruby build/build.rb
             echo $(date) > build_timestamp
-            git commit -m "Build $(date)"
-            git push origin production
+            git add --all
+            git commit -m "[skip ci] Build $(date)"
+            git push origin production -f
 
 workflows:
   version: 2
   deploy:
     jobs:
-      - build
+      - build:
+        filters:
+          branches:
+            only:
+              - main
   nightly:
     triggers:
       - schedule:
