@@ -10,13 +10,15 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "Install"
+          name: "Build"
           command: |
             gem install bundler -v 2.1.4
             bundle install
             git checkout production
+            git merge main --no-ff
             bundle exec ruby build/build.rb
             echo $(date) > build_timestamp
+            git add --all
             git commit -m "Build $(date)"
             git push origin production
 
