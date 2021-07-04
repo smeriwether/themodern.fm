@@ -4,9 +4,6 @@ orbs:
 
 jobs:
   build:
-    branches:
-      only:
-        - main
     docker:
       - image: cimg/ruby:3.0.1-node
     executor: ruby/default
@@ -20,19 +17,23 @@ jobs:
             gem install bundler -v 2.1.4
             bundle install
             git checkout production
-            git merge main --no-ff
+            git merge main --no-commit --no-ff
             git checkout -- .gitignore
             bundle exec ruby build/build.rb
             echo $(date) > build_timestamp
             git add --all
-            git commit -m "Build $(date)"
-            git push origin production
+            git commit -m "[skip ci] Build $(date)"
+            git push origin production -f
 
 workflows:
   version: 2
   deploy:
     jobs:
-      - build
+      - build:
+        filters:
+          branches:
+            only:
+              - main
   nightly:
     triggers:
       - schedule:
