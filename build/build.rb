@@ -5,8 +5,9 @@ require "json"
 
 FEED_URLS = [
   "https://feeds.captivate.fm/a-modern-man/",
-  "https://feeds.captivate.fm/fargo-watch-party/",
+  "https://feeds.captivate.fm/weekly-spread-podcast/",
   "https://feeds.captivate.fm/a-modern-woman/",
+  "https://feeds.captivate.fm/fargo-watch-party/",
 ]
 
 feed_data = FEED_URLS.map do |feed_url|
