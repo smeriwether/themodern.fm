@@ -40,7 +40,7 @@ layout: default
 {% for podcast in site.data.podcasts %}
   <section class="mb-12 lg:pl-12">
     <header class="flex items-center mb-8">
-      <img src="{{ podcast.artwork_url }}" alt="" class="w-20 h-20 shadow rounded mr-4" />
+      <img src="{{ podcast.artwork_url_sm }}" width="80" height="80" alt="" class="shadow rounded mr-4" />
       <h2 class="font-bold text-2xl">
         <a href="/{{ podcast.slug }}">{{ podcast.name }}</a>
       </h2>
