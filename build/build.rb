@@ -11,22 +11,14 @@ FEED_URLS = [
 ]
 
 FEED_ARTWORK_DATA = {
-  "https://feeds.captivate.fm/a-modern-man/" => {
-    "lg" => "https://themodern.fm/assets/a-modern-man-240x240.jpg",
-    "sm" => "https://themodern.fm/assets/a-modern-man-80x80.jpg"
-  },
-  "https://feeds.captivate.fm/weekly-spread-podcast/" => {
-    "lg" => "https://themodern.fm/assets/wsp-240x240.jpg",
-    "sm" => "https://themodern.fm/assets/wsp-80x80.jpg"
-  },
-  "https://feeds.captivate.fm/a-modern-woman/" => {
-    "lg" => "https://themodern.fm/assets/a-modern-woman-240x240.jpg",
-    "sm" => "https://themodern.fm/assets/a-modern-woman-80x80.jpg"
-  },
-  "https://feeds.captivate.fm/fargo-watch-party/" => {
-    "lg" => "https://themodern.fm/assets/fargo-watch-party-240x240.jpg",
-    "sm" => "https://themodern.fm/assets/fargo-watch-party-80x80.jpg"
-  },
+  "https://feeds.captivate.fm/a-modern-man/" =>
+    "https://themodern.fm/assets/a-modern-man-240x240.jpg",
+  "https://feeds.captivate.fm/weekly-spread-podcast/" =>
+    "https://themodern.fm/assets/wsp-240x240.jpg",
+  "https://feeds.captivate.fm/a-modern-woman/" =>
+    "https://themodern.fm/assets/a-modern-woman-240x240.jpg",
+  "https://feeds.captivate.fm/fargo-watch-party/" =>
+    "https://themodern.fm/assets/fargo-watch-party-240x240.jpg",
 }
 
 feed_data = FEED_URLS.map do |feed_url|
@@ -36,8 +28,7 @@ feed_data = FEED_URLS.map do |feed_url|
     {
       name: feed.channel.title,
       slug: slug,
-      artwork_url_lg: FEED_ARTWORK_DATA.dig(feed_url, "lg") || feed.channel.image.url,
-      artwork_url_sm: FEED_ARTWORK_DATA.dig(feed_url, "sm") || feed.channel.image.url,
+      artwork_url: FEED_ARTWORK_DATA.dig(feed_url) || feed.channel.image.url,
       subtitle: feed.channel.itunes_subtitle,
       author: feed.channel.itunes_owner.itunes_name,
       description: feed.channel.description,
@@ -60,8 +51,7 @@ podcasts_data = feed_data.map do |feed|
   {
     name: feed[:name],
     slug: feed[:slug],
-    artwork_url_lg: feed[:artwork_url_lg],
-    artwork_url_sm: feed[:artwork_url_sm],
+    artwork_url: feed[:artwork_url],
     subtitle: feed[:subtitle],
     author: feed[:author],
     description: feed[:description],
