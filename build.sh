@@ -1,7 +1,7 @@
 #!/bin/bash
 
 rm -rf ./_data
-mkdir ./_date
+mkdir ./_data
 
 bundle exec ruby build/build.rb
 
