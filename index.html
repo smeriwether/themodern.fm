@@ -19,7 +19,7 @@ layout: default
     {% assign latest_episode = site.data.episodes[latest_episode_hash.podcast].episodes[0] %}
     {% assign latest_podcast = site.data.podcasts | find:"slug",latest_episode_hash.podcast %}
 
-    <img src="{{ latest_podcast.artwork_url }}" alt="" class="max-w-xxs max-h-60 m-6 shadow-xl rounded transform -rotate-2" />
+    <img src="{{ latest_podcast.artwork_url_lg }}" height="240" width="240" alt="" class="m-6 shadow-xl rounded transform -rotate-2" />
 
     <div class="p-6 flex flex-col justify-center">
       <h3 class="mb-2 text-lg font-bold">{{ latest_podcast.name }}</h3>
