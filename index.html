@@ -6,7 +6,7 @@ layout: default
   <h1 class="text-6xl font-bold pb-2 leading-tight font-merriweather font-black lg:text-8xl">
     <a href="/">The Modern</a>
   </h1>
-  <p class="lg:text-xl">A podcast network by JD Ferrell and <a href="https://merimerimeri.com" rel="noopener">Stephen Meriwether</a></p>
+  <p class="lg:text-xl">A podcast network by <span class="font-bold">JD Ferrell</span> and <a href="https://merimerimeri.com" rel="noopener">Stephen Meriwether</a></p>
 </header>
 
 <section class="mb-12 py-4 px-4 bg-yellow-50 lg:py-8 lg:px-8" data-attr="latest-podcast">
@@ -19,7 +19,7 @@ layout: default
     {% assign latest_episode = site.data.episodes[latest_episode_hash.podcast].episodes[0] %}
     {% assign latest_podcast = site.data.podcasts | find:"slug",latest_episode_hash.podcast %}
 
-    <img src="{{ latest_podcast.artwork_url_lg }}" height="240" width="240" alt="" class="m-6 shadow-xl rounded transform -rotate-2" />
+    <img src="{{ latest_podcast.artwork_url }}" height="240" width="240" alt="" class="m-6 shadow-xl rounded transform -rotate-2" />
 
     <div class="p-6 flex flex-col justify-center">
       <h3 class="mb-2 text-lg font-bold">{{ latest_podcast.name }}</h3>
@@ -40,7 +40,7 @@ layout: default
 {% for podcast in site.data.podcasts %}
   <section class="mb-12 lg:pl-12">
     <header class="flex items-center mb-8">
-      <img src="{{ podcast.artwork_url_sm }}" width="80" height="80" alt="" class="shadow rounded mr-4" />
+      <img src="{{ podcast.artwork_url }}" width="80" height="80" alt="" class="shadow rounded mr-4" />
       <h2 class="font-bold text-2xl">
         <a href="/{{ podcast.slug }}">{{ podcast.name }}</a>
       </h2>

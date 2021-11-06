@@ -10,9 +10,3 @@
     @apply font-bold hover:text-gray-500
   }
 }
-
-@layer utilities {
-  .max-w-xxs {
-    max-width: 15rem; /* 240px */
-  }
-}
