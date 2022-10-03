@@ -78,3 +78,38 @@ layout: default
     </ol>
   </section>
 {% endfor %}
+
+<div class="mt-24 mb-12 lg:pl-12 text-gray-500">
+  <span class="block text-3xl font-bold mb-4">Retired Shows</span>
+  <span>Our retired shows, they were great while they lasted but are no more.</span>
+</div>
+
+{% for podcast in site.data.past_podcasts %}
+  <section class="mb-12 lg:pl-12 text-gray-400">
+    <header class="flex items-center mb-8">
+      <img src="{{ podcast.artwork_url }}" width="80" height="80" alt="" class="shadow rounded mr-4" />
+      <h2 class="font-bold text-2xl">
+        <a href="/{{ podcast.slug }}">{{ podcast.name }}</a>
+      </h2>
+    </header>
+
+    <ol class="ml-4 lg:ml-8">
+      {% for episode in site.data.past_episodes[podcast.slug].episodes limit:5 %}
+        <li class="pb-4">
+          <a href="/{{ episode.slug }}" class="font-normal">
+            <span class="font-bold mr-3">{{ episode.number }}</span>{{ episode.name }}
+          </a>
+        </li>
+      {% endfor %}
+
+      <li class="pt-2">
+        <a href="/{{ podcast.slug }}" class="text-sm">
+          <span class="mr-1">View All</span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 inline">
+            <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        </a>
+      </li>
+    </ol>
+  </section>
+{% endfor %}

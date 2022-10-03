@@ -9,11 +9,16 @@ module PodcastPagePlugin
         episodes = site.data["episodes"][podcast["slug"]]
         site.pages << PodcastPage.new(site, podcast, episodes)
       end
+
+      site.data["past_podcasts"].each do |podcast|
+        episodes = site.data["past_episodes"][podcast["slug"]]
+        site.pages << PodcastPage.new(site, podcast, episodes, true)
+      end
     end
   end
 
   class PodcastPage < Jekyll::Page
-    def initialize(site, podcast, episodes)
+    def initialize(site, podcast, episodes, retired = false)
       @site = site
       @base = site.source
       @dir  = podcast["slug"]
@@ -25,6 +30,7 @@ module PodcastPagePlugin
       @data = {
         "episodes" => episodes["episodes"],
         "podcast" => podcast,
+        "retired" => retired,
         "show_secondary_navigation" => true,
       }
 
