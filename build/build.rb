@@ -6,6 +6,9 @@ require "json"
 FEED_URLS = [
   "https://feeds.captivate.fm/a-modern-man/",
   "https://feeds.captivate.fm/weekly-spread-podcast/",
+]
+
+PAST_FEED_URLS = [
   "https://feeds.captivate.fm/a-modern-woman/",
   "https://feeds.captivate.fm/fargo-watch-party/",
 ]
@@ -21,7 +24,7 @@ FEED_ARTWORK_DATA = {
     "https://themodern.fm/assets/fargo-watch-party-240x240.jpg",
 }
 
-feed_data = FEED_URLS.map do |feed_url|
+def fetch_feed_data(feed_url)
   URI.open(feed_url) do |rss|
     feed = RSS::Parser.parse(rss)
     slug = feed.channel.title.gsub(" ", "-").downcase
@@ -47,7 +50,7 @@ feed_data = FEED_URLS.map do |feed_url|
   end
 end
 
-podcasts_data = feed_data.map do |feed|
+def feed_to_podcast(feed)
   {
     name: feed[:name],
     slug: feed[:slug],
@@ -58,7 +61,7 @@ podcasts_data = feed_data.map do |feed|
   }
 end
 
-episodes_data = feed_data.map do |feed|
+def feed_to_episode(feed)
   {
     feed[:slug] => {
       episodes: feed[:episodes].map do |episode|
@@ -74,6 +77,30 @@ episodes_data = feed_data.map do |feed|
       end
     }
   }
+end
+
+feed_data = FEED_URLS.map do |feed_url|
+  fetch_feed_data(feed_url)
+end
+
+past_shows_feed_data = PAST_FEED_URLS.map do |feed_url|
+  fetch_feed_data(feed_url)
+end
+
+podcasts_data = feed_data.map do |feed|
+  feed_to_podcast(feed)
+end
+
+past_podcasts_data = past_shows_feed_data.map do |feed|
+  feed_to_podcast(feed)
+end
+
+episodes_data = feed_data.map do |feed|
+  feed_to_episode(feed)
+end.inject(:merge)
+
+past_episodes_data = past_shows_feed_data.map do |feed|
+  feed_to_episode(feed)
 end.inject(:merge)
 
 latest_episode_data = {
@@ -86,4 +113,6 @@ latest_episode_data = {
 
 File.write("_data/podcasts.json", podcasts_data.to_json)
 File.write("_data/episodes.json", episodes_data.to_json)
+File.write("_data/past_podcasts.json", past_podcasts_data.to_json)
+File.write("_data/past_episodes.json", past_episodes_data.to_json)
 File.write("_data/latest_episode.json", latest_episode_data.to_json)
