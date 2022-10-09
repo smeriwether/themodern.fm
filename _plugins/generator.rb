@@ -62,7 +62,7 @@ module EpisodePagePlugin
 
       site.data["past_episodes"].each do |episode_arr|
         podcast = site.data["past_podcasts"].find { |p| p["slug"] == episode_arr[0] }
-        episode_arr[1]["episodes"].each do |episode|
+        episode_arr[1]["past_episodes"].each do |episode|
           site.pages << EpisodePage.new(site, episode, podcast)
         end
       end
