@@ -9,10 +9,14 @@ jobs:
     executor: ruby/default
     steps:
       - checkout
+      - run: | # this job exits if the branch matches a string
+          if [ "$CIRCLE_BRANCH" == 'production' ]; then
+            exit 1
+          fi
       - run:
           name: "Build"
           command: |
-            git config user.email "smeriwether@hey.com"
+            git config user.email "stephen@merimerimeri.com"
             git config user.name "Stephen Meriwether"
             gem install bundler -v 2.1.4
             bundle install
@@ -23,7 +27,7 @@ jobs:
             bundle exec ruby build/build.rb
             echo $(date) > build_timestamp
             git add --all
-            git commit -m "[skip ci] Build $(date)"
+            git commit -m "Build $(date)"
             git push origin production -f
 
 workflows:
