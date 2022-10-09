@@ -63,14 +63,14 @@ module EpisodePagePlugin
       site.data["past_episodes"].each do |episode_arr|
         podcast = site.data["past_podcasts"].find { |p| p["slug"] == episode_arr[0] }
         episode_arr[1]["episodes"].each do |episode|
-          site.pages << EpisodePage.new(site, episode, podcast)
+          site.pages << EpisodePage.new(site, episode, podcast, true)
         end
       end
     end
   end
 
   class EpisodePage < Jekyll::Page
-    def initialize(site, episode, podcast)
+    def initialize(site, episode, podcast, retired = false)
       @site = site
       @base = site.source
       @dir  = episode["slug"]
@@ -84,6 +84,7 @@ module EpisodePagePlugin
         "podcast" => podcast,
         "show_secondary_navigation" => true,
         "show_podcast_player" => true,
+        "retired" => retired,
       }
 
       data.default_proc = proc do |_, key|
