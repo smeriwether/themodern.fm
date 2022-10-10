@@ -11,7 +11,7 @@ jobs:
       - checkout
       - run: | # this job exits if the branch matches a string
           if [ "$CIRCLE_BRANCH" == 'production' ]; then
-            exit 0
+            exit 1
           fi
       - run:
           name: "Build"
