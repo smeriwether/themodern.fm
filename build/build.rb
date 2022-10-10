@@ -2,6 +2,7 @@ require "pry"
 require "rss"
 require "open-uri"
 require "json"
+require_relative "./build_wsp"
 
 FEED_URLS = [
   "https://feeds.captivate.fm/a-modern-man/",
@@ -116,3 +117,4 @@ File.write("_data/episodes.json", episodes_data.to_json)
 File.write("_data/past_podcasts.json", past_podcasts_data.to_json)
 File.write("_data/past_episodes.json", past_episodes_data.to_json)
 File.write("_data/latest_episode.json", latest_episode_data.to_json)
+File.write("_data/wsp_picks.json", wsp_picks_data.to_json)
