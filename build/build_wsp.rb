@@ -1,7 +1,7 @@
 def jd_picks_2022
   [
     [
-      { pick: "Vikings -6.5 vs. Bears", winner: true },
+      { pick: "Vikings -7.5 vs. Bears", winner: false },
       { pick: "Titans -1.5 at Commanders", winner: true },
       { pick: "49ers -6.5 at Panthers", winner: true }
     ],
