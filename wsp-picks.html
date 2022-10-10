@@ -1,0 +1,132 @@
+---
+layout: default
+show_secondary_navigation: true
+---
+
+<header class="mb-8">
+  <h1 class="text-3xl font-bold mb-2">WSP Picks</h1>
+  <p>
+    On the <a href="https://themodern.fm/weekly-spread-podcast">Weekly Spread Podcast</a> JD and Stephen pick their favorite NFL spreads
+    each week of the NFL season. Use this page to see what we picked, and how we did...
+  </p>
+</header>
+
+{% for season in site.data.wsp_picks %}
+  <section>
+    <header class="mb-6">
+      <h2 class="text-2xl font-bold">{{ season.name }}</h2>
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-8 mb-8">
+      <header class="mb-2 md:mb-6">
+        {% assign jd_season_winner_count = 0 %}
+        {% assign jd_season_loser_count = 0 %}
+        {% assign jd_season_push_count = 0 %}
+        {% for week in season.weeks %}
+          {% for pick in week.jd %}
+            {% if pick.winner != null %}
+              {% if pick.winner %}
+                {% assign jd_season_winner_count = jd_season_winner_count | plus: 1  %}
+              {% else %}
+                {% assign jd_season_loser_count = jd_season_loser_count | plus: 1  %}
+              {% endif %}
+            {% elsif pick.push %}
+              {% assign jd_season_push_count = jd_season_push_count | plus: 1  %}
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+        <p class="text-sm italic">
+          JD's Season Record: {{ jd_season_winner_count }}-{{ jd_season_loser_count }}{% if jd_season_push_count > 0 %}-{{ jd_season_push_count }}{% endif %}
+        </p>
+      </header>
+
+      <header>
+        {% assign stephen_season_winner_count = 0 %}
+        {% assign stephen_season_loser_count = 0 %}
+        {% assign stephen_season_push_count = 0 %}
+        {% for week in season.weeks %}
+          {% for pick in week.stephen %}
+            {% if pick.winner != null %}
+              {% if pick.winner %}
+                {% assign stephen_season_winner_count = stephen_season_winner_count | plus: 1  %}
+              {% else %}
+                {% assign stephen_season_loser_count = stephen_season_loser_count | plus: 1  %}
+              {% endif %}
+            {% elsif pick.push %}
+              {% assign stephen_season_push_count = stephen_season_push_count | plus: 1  %}
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+        <p class="text-sm italic">
+          Stephen's Season Record: {{ stephen_season_winner_count }}-{{ stephen_season_loser_count }}{% if stephen_season_push_count > 0 %}-{{ stephen_season_push_count }}{% endif %}
+        </p>
+      </header>
+    </div>
+
+    {% for week in season.weeks %}
+      <div class="mb-8 md:mb-12">
+        <h3 class="text-xl font-bold mb-2">{{ week.name }}</h4>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
+          <div>
+            {% assign jd_winner_count = 0 %}
+            {% assign jd_loser_count = 0 %}
+            {% assign jd_push_count = 0 %}
+            {% for pick in week.jd %}
+              {% if pick.winner != null %}
+                {% if pick.winner %}
+                  {% assign jd_winner_count = jd_winner_count | plus: 1  %}
+                {% else %}
+                  {% assign jd_loser_count = jd_loser_count | plus: 1  %}
+                {% endif %}
+              {% elsif pick.push %}
+                {% assign jd_push_count = jd_push_count | plus: 1  %}
+              {% endif %}
+            {% endfor %}
+
+            <h4 class="font-bold mb-4">
+              JD's Picks
+              <span class="text-xs italic font-normal">
+                ({{ jd_winner_count }}-{{ jd_loser_count }}{% if jd_push_count > 0 %}-{{ jd_push_count }}{% endif %})
+              </span>
+            </h4>
+            <ol>
+              {% for pick in week.jd %}
+                <li class="mb-1">{{ pick.pick }} {% if pick.winner != null %}{% if pick.winner %}✅{% else %}❌{% endif %}{% elsif pick.push %}🟨{% endif %}</li>
+              {% endfor %}
+            </ol>
+          </div>
+
+          <div>
+            {% assign stephen_winner_count = 0 %}
+            {% assign stephen_loser_count = 0 %}
+            {% assign stephen_push_count = 0 %}
+            {% for pick in week.stephen %}
+              {% if pick.winner != null %}
+                {% if pick.winner %}
+                  {% assign stephen_winner_count = stephen_winner_count | plus: 1  %}
+                {% else %}
+                  {% assign stephen_loser_count = stephen_loser_count | plus: 1  %}
+                {% endif %}
+              {% elsif pick.push %}
+                {% assign stephen_push_count = stephen_push_count | plus: 1  %}
+              {% endif %}
+            {% endfor %}
+
+            <h4 class="font-bold mb-4">
+              Stephen's Picks
+              <span class="text-xs italic font-normal">
+                ({{ stephen_winner_count }}-{{ stephen_loser_count }}{% if stephen_push_count > 0 %}-{{ stephen_push_count }}{% endif %})
+              </span>
+            </h4>
+            <ol>
+              {% for pick in week.stephen %}
+                <li class="mb-1">{{ pick.pick }} {% if pick.winner != null %}{% if pick.winner %}✅{% else %}❌{% endif %}{% elsif pick.push %}🟨{% endif %}</li>
+              {% endfor %}
+            </ol>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </section>
+{% endfor %}
