@@ -18,12 +18,13 @@ show_secondary_navigation: true
     </header>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-8 mb-8">
-      <header class="mb-2 md:mb-6">
+      <header class="mb-6">
         {% assign jd_season_winner_count = 0 %}
         {% assign jd_season_loser_count = 0 %}
         {% assign jd_season_push_count = 0 %}
         {% for week in season.weeks %}
-          {% for pick in week.jd %}
+          {% assign spread_picks = week.jd | where: "eliminator_pick", nil %}
+          {% for pick in spread_picks %}
             {% if pick.winner != null %}
               {% if pick.winner %}
                 {% assign jd_season_winner_count = jd_season_winner_count | plus: 1  %}
@@ -35,8 +36,27 @@ show_secondary_navigation: true
             {% endif %}
           {% endfor %}
         {% endfor %}
+        <p class="text-sm italic mb-2">
+          JD's Against the Spread Record: {{ jd_season_winner_count }}-{{ jd_season_loser_count }}{% if jd_season_push_count > 0 %}-{{ jd_season_push_count }}{% endif %}
+        </p>
+
+        {% assign jd_season_eliminator_winner_count = 0 %}
+        {% assign jd_season_eliminator_loser_count = 0 %}
+        {% assign jd_season_eliminator_push_count = 0 %}
+        {% for week in season.weeks %}
+          {% assign eliminator_pick = week.jd | where: "pick", nil | first %}
+          {% if eliminator_pick.winner != null %}
+            {% if eliminator_pick.winner %}
+              {% assign jd_season_eliminator_winner_count = jd_season_eliminator_winner_count | plus: 1  %}
+            {% else %}
+              {% assign jd_season_eliminator_loser_count = jd_season_eliminator_loser_count | plus: 1  %}
+            {% endif %}
+          {% elsif eliminator_pick.push %}
+            {% assign jd_season_eliminator_push_count = jd_season_eliminator_push_count | plus: 1  %}
+          {% endif %}
+        {% endfor %}
         <p class="text-sm italic">
-          JD's Season Record: {{ jd_season_winner_count }}-{{ jd_season_loser_count }}{% if jd_season_push_count > 0 %}-{{ jd_season_push_count }}{% endif %}
+          JD's Eliminator Record: {{ jd_season_eliminator_winner_count }}-{{ jd_season_eliminator_loser_count }}{% if jd_season_eliminator_push_count > 0 %}-{{ jd_season_eliminator_push_count }}{% endif %}
         </p>
       </header>
 
@@ -45,7 +65,8 @@ show_secondary_navigation: true
         {% assign stephen_season_loser_count = 0 %}
         {% assign stephen_season_push_count = 0 %}
         {% for week in season.weeks %}
-          {% for pick in week.stephen %}
+          {% assign spread_picks = week.stephen | where: "eliminator_pick", nil %}
+          {% for pick in spread_picks %}
             {% if pick.winner != null %}
               {% if pick.winner %}
                 {% assign stephen_season_winner_count = stephen_season_winner_count | plus: 1  %}
@@ -57,8 +78,27 @@ show_secondary_navigation: true
             {% endif %}
           {% endfor %}
         {% endfor %}
+        <p class="text-sm italic mb-2">
+          Stephen's Against the Spread Record: {{ stephen_season_winner_count }}-{{ stephen_season_loser_count }}{% if stephen_season_push_count > 0 %}-{{ stephen_season_push_count }}{% endif %}
+        </p>
+
+        {% assign stephen_season_eliminator_winner_count = 0 %}
+        {% assign stephen_season_eliminator_loser_count = 0 %}
+        {% assign stephen_season_eliminator_push_count = 0 %}
+        {% for week in season.weeks %}
+          {% assign eliminator_pick = week.stephen | where: "pick", nil | first %}
+          {% if eliminator_pick.winner != null %}
+            {% if eliminator_pick.winner %}
+              {% assign stephen_season_eliminator_winner_count = stephen_season_eliminator_winner_count | plus: 1  %}
+            {% else %}
+              {% assign stephen_season_eliminator_loser_count = stephen_season_eliminator_loser_count | plus: 1  %}
+            {% endif %}
+          {% elsif eliminator_pick.push %}
+            {% assign stephen_season_eliminator_push_count = stephen_season_eliminator_push_count | plus: 1  %}
+          {% endif %}
+        {% endfor %}
         <p class="text-sm italic">
-          Stephen's Season Record: {{ stephen_season_winner_count }}-{{ stephen_season_loser_count }}{% if stephen_season_push_count > 0 %}-{{ stephen_season_push_count }}{% endif %}
+          Stephen's Eliminator Record: {{ stephen_season_eliminator_winner_count }}-{{ stephen_season_eliminator_loser_count }}{% if stephen_season_eliminator_push_count > 0 %}-{{ stephen_season_eliminator_push_count }}{% endif %}
         </p>
       </header>
     </div>
@@ -67,12 +107,13 @@ show_secondary_navigation: true
       <div class="mb-8 md:mb-12">
         <h3 class="text-xl font-bold mb-2">{{ week.name }}</h4>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           <div>
             {% assign jd_winner_count = 0 %}
             {% assign jd_loser_count = 0 %}
             {% assign jd_push_count = 0 %}
-            {% for pick in week.jd %}
+            {% assign spread_picks = week.jd | where: "eliminator_pick", nil %}
+            {% for pick in spread_picks %}
               {% if pick.winner != null %}
                 {% if pick.winner %}
                   {% assign jd_winner_count = jd_winner_count | plus: 1  %}
@@ -91,9 +132,12 @@ show_secondary_navigation: true
               </span>
             </h4>
             <ol>
-              {% for pick in week.jd %}
+              {% for pick in spread_picks %}
                 <li class="mb-1">{{ pick.pick }} {% if pick.winner != null %}{% if pick.winner %}✅{% else %}❌{% endif %}{% elsif pick.push %}🟨{% endif %}</li>
               {% endfor %}
+
+              {% assign eliminator_pick = week.jd | where: "pick", nil | first %}
+              <li class="mt-6 italic">Eliminator Pick: {{ eliminator_pick.eliminator_pick }} {% if eliminator_pick.winner != null %}{% if eliminator_pick.winner %}✅{% else %}❌{% endif %}{% elsif eliminator_pick.push %}🟨{% endif %}</li>
             </ol>
           </div>
 
@@ -101,7 +145,8 @@ show_secondary_navigation: true
             {% assign stephen_winner_count = 0 %}
             {% assign stephen_loser_count = 0 %}
             {% assign stephen_push_count = 0 %}
-            {% for pick in week.stephen %}
+            {% assign spread_picks = week.stephen | where: "eliminator_pick", nil %}
+            {% for pick in spread_picks %}
               {% if pick.winner != null %}
                 {% if pick.winner %}
                   {% assign stephen_winner_count = stephen_winner_count | plus: 1  %}
@@ -120,9 +165,12 @@ show_secondary_navigation: true
               </span>
             </h4>
             <ol>
-              {% for pick in week.stephen %}
+              {% for pick in spread_picks %}
                 <li class="mb-1">{{ pick.pick }} {% if pick.winner != null %}{% if pick.winner %}✅{% else %}❌{% endif %}{% elsif pick.push %}🟨{% endif %}</li>
               {% endfor %}
+
+              {% assign eliminator_pick = week.stephen | where: "pick", nil | first %}
+              <li class="mt-6 italic">Eliminator Pick: {{ eliminator_pick.eliminator_pick }} {% if eliminator_pick.winner != null %}{% if eliminator_pick.winner %}✅{% else %}❌{% endif %}{% elsif eliminator_pick.push %}🟨{% endif %}</li>
             </ol>
           </div>
         </div>
