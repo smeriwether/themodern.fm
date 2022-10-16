@@ -2,8 +2,6 @@ on:
   push:
     branches:
     - main
-    branches-ignore:    
-    - production
   schedule:
   - cron: "5 3,11,15 * * *"
 jobs:
