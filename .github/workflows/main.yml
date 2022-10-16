@@ -1,0 +1,25 @@
+on:
+  push:
+    branches:
+    - main
+    branches-ignore:    
+    - production
+  schedule:
+  - cron: "5 3,11,15 * * *"
+jobs:
+  fetch_latest_data:
+    name: "Fetch the latest podcast data from Captivate"
+    runs-on: "ubuntu-latest"
+    steps:
+    - uses: actions/checkout@v3
+    - uses: ruby/setup-ruby@v1
+      with:
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    - run: |
+        git config user.email "stephen@merimerimeri.com"
+        git config user.name "Stephen Meriwether"
+        bundle exec ruby build/build.rb
+        echo $(date) > build_timestamp
+        git add --all
+        git commit -m "Build $(date)"
+        git push origin production -f
