@@ -16,7 +16,10 @@ jobs:
     - run: |
         git config user.email "stephen@merimerimeri.com"
         git config user.name "Stephen Meriwether"
-        mkdir _data
+        git checkout -- Gemfile.lock
+        git checkout production
+        git merge main --no-commit --no-ff
+        git checkout -- .gitignore
         bundle exec ruby build/build.rb
         echo $(date) > build_timestamp
         git add --all
