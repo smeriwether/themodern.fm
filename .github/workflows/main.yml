@@ -16,6 +16,7 @@ jobs:
     - run: |
         git config user.email "stephen@merimerimeri.com"
         git config user.name "Stephen Meriwether"
+        mkdir _data
         bundle exec ruby build/build.rb
         echo $(date) > build_timestamp
         git add --all
