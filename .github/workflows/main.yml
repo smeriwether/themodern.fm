@@ -19,7 +19,7 @@ jobs:
         git config user.email "stephen@merimerimeri.com"
         git config user.name "Stephen Meriwether"
         git restore .
-        git checkout production
+        git checkout -f production
         git merge main --no-commit --no-ff
         git checkout -- .gitignore
         bundle exec ruby build/build.rb
