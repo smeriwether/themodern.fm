@@ -18,8 +18,7 @@ jobs:
     - run: |
         git config user.email "stephen@merimerimeri.com"
         git config user.name "Stephen Meriwether"
-        git checkout -- Gemfile.lock
-        git checkout -- .bundle/config
+        git restore .
         git checkout production
         git merge main --no-commit --no-ff
         git checkout -- .gitignore
