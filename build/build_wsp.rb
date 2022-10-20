@@ -13,27 +13,27 @@ def jd_picks_2022
       { eliminator_pick: 'Packers', winner: false }
     ],
     [
-      { pick: "Vikings -3 at Saints", winner: false },
+      { pick: "Vikings -3.5 at Saints", winner: false },
       { pick: "Texans +5 vs. Chargers", winner: false },
       { pick: "Jags +6.5 at Eagles", winner: false },
       { eliminator_pick: 'Giants', winner: true }
     ],
     [
-      { pick: "Commanders -6.5 vs Eagles", winner: false },
-      { pick: "Vikings -6 vs Lions", winner: false },
+      { pick: "Commanders -6.5 vs. Eagles", winner: false },
+      { pick: "Vikings -6 vs. Lions", winner: false },
       { pick: "Texans +3 at Bears", "push": true },
       { eliminator_pick: 'Saints', winner: false }
     ],
     [
-      { pick: "Ravens -3.5 vs Dolphins", winner: false },
-      { pick: "Steelers +2 vs Patriots", winner: false },
-      { pick: "Packers -9.5 vs Bears", winner: true },
+      { pick: "Ravens -3.5 vs. Dolphins", winner: false },
+      { pick: "Steelers +2 vs. Patriots", winner: false },
+      { pick: "Packers -9.5 vs. Bears", winner: true },
       { eliminator_pick: 'Lions', winner: true }
     ],
     [
       { pick: "Jags +3 at Commanders", winner: false },
       { pick: "Chiefs -6.5 at Cardinals", winner: true },
-      { pick: "Panthers -1 vs Browns", winner: false },
+      { pick: "Panthers -1 vs. Browns", winner: false },
       { eliminator_pick: 'Dolphins', winner: true }
     ],
   ]
@@ -66,7 +66,7 @@ def stephen_picks_2022
       { eliminator_pick: 'Raiders', winner: false }
     ],
     [
-      { pick: "Ravens -3.5 vs Dolphins", winner: false },
+      { pick: "Ravens -3.5 vs. Dolphins", winner: false },
       { pick: "Bengals -7 at Cowboys", winner: false },
       { pick: "Vikings +2.5 at Eagles", winner: false },
       { eliminator_pick: 'Bengals', winner: false }
@@ -74,7 +74,7 @@ def stephen_picks_2022
     [
       { pick: "Jags +3 at Commanders", winner: false },
       { pick: "Ravens -6.5 at Jets", winner: true },
-      { pick: "Panthers -1 vs Browns", winner: false },
+      { pick: "Panthers -1 vs. Browns", winner: false },
       { eliminator_pick: 'Panthers', winner: false }
     ],
   ]
