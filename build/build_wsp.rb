@@ -56,7 +56,7 @@ def stephen_picks_2022
     [
       { pick: "Raiders -1 at Saints" },
       { pick: "Titans -2.5 at Texans" },
-      { pick: "49ers 1.5 at Rams" },
+      { pick: "49ers -1.5 at Rams" },
       { eliminator_pick: 'Titans' }
     ],
     [
