@@ -63,7 +63,7 @@ def stephen_picks_2022
       { pick: "Seahawks +2 at Cardinals", winner: true },
       { pick: "Bucs -2.5 at Rams", winner: true },
       { pick: "Falcons +3 at Chargers", "push": true },
-      { eliminator_pick: "Ravens" }
+      { eliminator_pick: "Ravens", winner: true }
     ],
     [
       { pick: "Raiders -1 at Saints", winner: false },
