@@ -3,7 +3,7 @@ def jd_picks_2022
     [
       { pick: "Chiefs -9 vs. Jags" },
       { pick: "Titans -3 vs. Broncos" },
-      { pick: "Steelers -1.5 vs. Saints" },
+      { pick: "Steelers +1.5 vs. Saints" },
       { eliminator_pick: "Raiders" }
     ],
      [
