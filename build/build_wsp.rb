@@ -1,6 +1,11 @@
 def jd_picks_2022
   [
     [
+      { pick: "Colts +3.5 at Vikings", winner: true },
+      { pick: "Chiefs -14.5 at Texans" },
+      { pick: "Bears +8.5 vs. Eagles" },
+    ],
+    [
       { pick: "Vikings +2 at Lions", winner: false },
       { pick: "Bills -10 vs. Jets", winner: false },
       { pick: "Seahawks -4 vs. Panthers", winner: false },
@@ -89,6 +94,12 @@ end
 
 def stephen_picks_2022
   [
+    [
+      { pick: "Chargers -3 vs. Titans" },
+      { pick: "Falcons +4 at Saints" },
+      { pick: "Steelers +3 at Panthers" },
+      { eliminator_pick: "Broncos" }
+    ],
     [
       { pick: "Bengals -5.5 vs. Browns", winner: true },
       { pick: "Jets +10 at Bills", winner: true },
