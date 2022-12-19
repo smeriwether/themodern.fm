@@ -95,10 +95,10 @@ end
 def stephen_picks_2022
   [
     [
-      { pick: "Chargers -3 vs. Titans" },
+      { pick: "Chargers -3 vs. Titans", "push": true },
       { pick: "Falcons +4 at Saints", winner: true },
       { pick: "Steelers +3 at Panthers", winner: true },
-      { eliminator_pick: "Broncos" }
+      { eliminator_pick: "Broncos", winner: true }
     ],
     [
       { pick: "Bengals -5.5 vs. Browns", winner: true },
