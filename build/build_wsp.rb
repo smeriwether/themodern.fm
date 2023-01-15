@@ -113,6 +113,12 @@ end
 def stephen_picks_2022
   [
     [
+      { pick: "Bills -13.5 vs. Dolphins" },
+      { pick: "Vikings -3 vs. Giants" },
+      { pick: "Bengals -9.5 vs. Ravens" },
+      { pick: "Bucs -2.5 vs. Cowboys" },
+    ],
+    [
       { pick: "Vikings -7 at Bears", winner: true },
       { pick: "Rams +6 at Seahawks", winner: true },
       { pick: "Dolphins -3 vs. Jets", winner: true },
