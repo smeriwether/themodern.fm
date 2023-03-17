@@ -49,6 +49,18 @@ layout: default
   </div>
 </section>
 
+{% if latest_podcast.name == "Weekly Spread Podcast" %}
+<div class="text-center mb-8">
+  <a href="/wsp-picks" class="font-normal inline-block mb-8 py-2 px-4 rounded-full border border-transparent text-yellow-900 hover:bg-yellow-50 hover:border-yellow-700 hover:text-yellow-900">
+    Follow along as Stephen & JD pick NFL spreads every week of the season
+
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="inline ml-2 w-5 h-5">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+    </svg>
+  </a>
+</div>
+{% endif %}
+
 {% for podcast in site.data.podcasts %}
   <section class="mb-12 lg:pl-12">
     <header class="flex items-center mb-8">

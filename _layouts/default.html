@@ -5,7 +5,7 @@
   </head>
 
   <body class="bg-primary text-gray-800 font-rubik">
-    {% if page.show_secondary_navigation or page.content contains "404" %}
+    {% if page.show_secondary_navigation %}
       {% include secondary_navigation.html %}
     {% endif %}
 

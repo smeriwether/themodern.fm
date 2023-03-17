@@ -38,11 +38,27 @@ layout: default
   </div>
 </section>
 
-<section class="mb-12 lg:px-8">
+{% assign margin_bottom = "mb-12" %}
+{% if podcast.name == 'Weekly Spread Podcast' %}
+  {% assign margin_bottom = "mb-4" %}
+{% endif %}
+<section class="{{ margin_bottom }} lg:px-8">
   <p class="mb-4 leading-loose">
     {{ podcast.description }}
   </p>
 </section>
+
+{% if podcast.name == "Weekly Spread Podcast" %}
+<div class="text-center mb-6">
+  <a href="/wsp-picks" class="font-normal inline-block mb-8 py-2 px-4 rounded-full border border-yellow-300 text-yellow-900 hover:bg-yellow-50 hover:border-yellow-700 hover:text-yellow-900">
+    Follow along with all of our picks and see how we did...
+
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="inline ml-2 w-5 h-5">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+    </svg>
+  </a>
+</div>
+{% endif %}
 
 <section class="mb-12 lg:px-8">
   <header class="flex items-center mb-8">

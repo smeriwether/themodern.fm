@@ -70,7 +70,7 @@ module EpisodePagePlugin
   end
 
   class EpisodePage < Jekyll::Page
-    def initialize(site, episode, podcast)
+    def initialize(site, episode, podcast, retired = false)
       @site = site
       @base = site.source
       @dir  = episode["slug"]
@@ -84,6 +84,7 @@ module EpisodePagePlugin
         "podcast" => podcast,
         "show_secondary_navigation" => true,
         "show_podcast_player" => true,
+        "retired" => retired,
       }
 
       data.default_proc = proc do |_, key|
