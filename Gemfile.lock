@@ -80,10 +80,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  concurrent-ruby (~> 1.2, >= 1.2.2)
   jekyll (~> 4.2.1)
   jekyll-feed (~> 0.15)
   jekyll-postcss
   jekyll-sitemap
+  listen (~> 3.8)
   pry
   rss!
   tzinfo (~> 1.2)

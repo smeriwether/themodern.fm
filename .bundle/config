@@ -1,0 +1,4 @@
+---
+BUNDLE_PATH: "/home/runner/work/themodern.fm/themodern.fm/vendor/bundle"
+BUNDLE_DEPLOYMENT: "true"
+BUNDLE_JOBS: "4"
