@@ -27,7 +27,7 @@ FEED_ARTWORK_DATA = {
 
 def fetch_feed_data(feed_url)
   URI.open(feed_url) do |rss|
-    feed = RSS::Parser.parse(rss)
+    feed = RSS::Parser.parse(rss, { validate: false })
     slug = feed.channel.title.gsub(" ", "-").downcase
     {
       name: feed.channel.title,
