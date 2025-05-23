@@ -6,12 +6,13 @@ require_relative "./build_wsp"
 
 FEED_URLS = [
   "https://feeds.captivate.fm/a-modern-man/",
-  "https://feeds.captivate.fm/weekly-spread-podcast/",
+  "https://feeds.captivate.fm/justjenna/",
 ]
 
 PAST_FEED_URLS = [
-  "https://feeds.captivate.fm/a-modern-woman/",
+  "https://feeds.captivate.fm/weekly-spread-podcast/",
   "https://feeds.captivate.fm/fargo-watch-party/",
+  "https://feeds.captivate.fm/a-modern-woman/",
 ]
 
 FEED_ARTWORK_DATA = {
@@ -23,6 +24,8 @@ FEED_ARTWORK_DATA = {
     "https://themodern.fm/assets/a-modern-woman-240x240.jpg",
   "https://feeds.captivate.fm/fargo-watch-party/" =>
     "https://themodern.fm/assets/fargo-watch-party-240x240.jpg",
+  "https://feeds.captivate.fm/just-jenna/" =>
+    "https://themodern.fm/assets/just-jenna-240x240.jpg",
 }
 
 def fetch_feed_data(feed_url)
