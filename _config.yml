@@ -24,7 +24,7 @@ description: >-
   The Modern is a podcast network that covers life, TV, sports, and more.
 baseurl: "/"
 url: "https://themodern.fm" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: _smeriwether
+twitter_username: stephenmhoc
 github_username:  smeriwether
 
 defaults:
